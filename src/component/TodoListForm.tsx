@@ -5,11 +5,13 @@ import { generateRandomString } from "../utils/utils";
 import { TodoController } from "../controller/todo-controller";
 
 interface TodoListFormProps {
+  list: TodoElementModel[],
   todoController: TodoController;
   addItem: (item: TodoElementModel) => void;
 }
 
 const TodoListForm: React.FC<TodoListFormProps> = ({
+  list,
   todoController,
   addItem,
 }) => {
@@ -26,7 +28,7 @@ const TodoListForm: React.FC<TodoListFormProps> = ({
       status: TodoStatus.IN_PROGRESS,
     };
 
-    todoController.addElement(item);
+    todoController.addElement(item, list);
 
     addItem(item);
   };

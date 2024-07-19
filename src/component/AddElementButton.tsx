@@ -23,7 +23,7 @@ const AddElementButton: React.FC<AddElementButtonProps> = ({
       status: TodoStatus.IN_PROGRESS,
     };
 
-    todoController.addElement(item);
+    todoController.addElement(item, []);
     addItem(item);
   };
   return <button onClick={handleClick}>{name}</button>;
