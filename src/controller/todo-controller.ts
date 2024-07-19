@@ -1,5 +1,6 @@
-import { TodoElementModel } from "../model/todo-model";
+import type { TodoElementModel } from "../model/todo-model";
 import { TodoService, TodoServiceImpl } from "../service/todo-service";
+import { CheckInput } from "../decorator/check-input-decorator";
 
 export interface TodoController {
   findAll(): TodoElementModel[];
@@ -18,8 +19,9 @@ export class TodoControllerImpl implements TodoController {
     return this.service.findAll();
   }
 
+  @CheckInput
   addElement(element: TodoElementModel, list: TodoElementModel[]): void {
-    list.push(element);
+    this.service.addElement(element, list);
   }
 
   removeElement(elementId: string): void {

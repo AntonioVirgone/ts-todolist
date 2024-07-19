@@ -5,7 +5,7 @@ export interface TodoService {
   // Find all element
   findAll(): TodoElementModel[];
   // Add element
-  addElement(item: TodoElementModel): void;
+  addElement(item: TodoElementModel, list: TodoElementModel[]): void;
   // Remove element
   removeElement(itemId: string): void;
 }
@@ -33,8 +33,8 @@ export class TodoServiceImpl implements TodoService {
       },
     ];
   }
-  addElement(item: TodoElementModel): void {
-    throw new Error("Method not implemented.");
+  addElement(item: TodoElementModel, list: TodoElementModel[]): void {
+    list.push(item);
   }
   removeElement(itemId: string): void {
     throw new Error("Method not implemented.");

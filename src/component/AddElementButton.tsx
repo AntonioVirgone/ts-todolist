@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import { TodoController } from "../controller/todo-controller";
 import { TodoStatus } from "../model/todo-status";
@@ -30,3 +31,6 @@ const AddElementButton: React.FC<AddElementButtonProps> = ({
 };
 
 export default AddElementButton;
+*/
+
+export {}
