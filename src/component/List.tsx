@@ -7,6 +7,8 @@ interface ListProps {
 }
 
 const List: React.FC<ListProps> = ({ items }) => {
+  console.log("list items");
+  
   return (
     <ul>
       {items.map((item, index) => (

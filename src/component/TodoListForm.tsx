@@ -5,13 +5,11 @@ import { generateRandomString } from "../utils/utils";
 import { TodoController } from "../controller/todo-controller";
 
 interface TodoListFormProps {
-  list: TodoElementModel[];
   todoController: TodoController;
   addItem: (item: TodoElementModel) => void;
 }
 
 const TodoListForm: React.FC<TodoListFormProps> = ({
-  list,
   todoController,
   addItem,
 }) => {
@@ -29,18 +27,23 @@ const TodoListForm: React.FC<TodoListFormProps> = ({
     };
 
     try {
-      todoController.addElement(item, list);
+      todoController.addElement(item);
       addItem(item);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const handleDelete = () => {
+    console.log("delete all");
+    todoController.removeAll()
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>
-          Title:{" "}
+          Title:
           <input
             type="text"
             value={title}
@@ -59,6 +62,7 @@ const TodoListForm: React.FC<TodoListFormProps> = ({
         </label>
       </div>
       <button type="submit">Submit</button>
+      <button onClick={handleDelete}>Delete</button>
     </form>
   );
 };

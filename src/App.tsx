@@ -15,10 +15,12 @@ function App() {
   const [items, setItems] = useState<TodoElementModel[]>(list);
 
   const addItem = (item: TodoElementModel) => {
-    setItems([...items, item]);
+    console.log("add item to list");
+    
+    setItems(prevItems => [...prevItems, item]);
   };
 
-  console.log(list);
+  console.log(items);
 
   return (
     <div className="App">
@@ -26,7 +28,6 @@ function App() {
       <TodoListForm
         todoController={todoController}
         addItem={addItem}
-        list={list}
       />
     </div>
   );

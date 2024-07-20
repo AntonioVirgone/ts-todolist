@@ -4,8 +4,9 @@ import { CheckInput } from "../decorator/check-input-decorator";
 
 export interface TodoController {
   findAll(): TodoElementModel[];
-  addElement(element: TodoElementModel, list: TodoElementModel[]): void;
+  addElement(element: TodoElementModel): void;
   removeElement(elementId: string): void;
+  removeAll(): void;
 }
 
 export class TodoControllerImpl implements TodoController {
@@ -20,12 +21,17 @@ export class TodoControllerImpl implements TodoController {
   }
 
   @CheckInput
-  addElement(element: TodoElementModel, list: TodoElementModel[]): void {
+  addElement(element: TodoElementModel): void {
+    const list = this.findAll();    
     this.service.addElement(element, list);
   }
 
   removeElement(elementId: string): void {
     throw new Error("Method not implemented.");
+  }
+
+  removeAll(): void {
+    this.service.removeAll();
   }
 }
 

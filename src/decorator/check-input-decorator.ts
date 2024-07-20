@@ -20,11 +20,7 @@ export function CheckInput(
 
     return originalMethod.apply(this, args);
   };
-  /*
-  if (values.filter((value) => value === null).length > 0) {
-    throw new Error("");
-  }
-    */
+  
   return descriptor;
 }
 
