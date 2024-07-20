@@ -1,16 +1,29 @@
-import { TodoElementModel } from "../model/todo-model";
+import type { TodoElementModel } from "../model/todo-model";
+import { TodoService, TodoServiceImpl } from "../service/todo-service";
+import { CheckInput } from "../decorator/check-input-decorator";
 
 export interface TodoController {
-  list: TodoElementModel[];
-  addElement(element: TodoElementModel): void;
+  findAll(): TodoElementModel[];
+  addElement(element: TodoElementModel, list: TodoElementModel[]): void;
   removeElement(elementId: string): void;
 }
 
 export class TodoControllerImpl implements TodoController {
-  constructor(public list: TodoElementModel[]) {}
-  addElement(element: TodoElementModel): void {
-    this.list.push(element);
+  private service: TodoService;
+
+  constructor() {
+    this.service = new TodoServiceImpl();
   }
+
+  findAll(): TodoElementModel[] {
+    return this.service.findAll();
+  }
+
+  @CheckInput
+  addElement(element: TodoElementModel, list: TodoElementModel[]): void {
+    this.service.addElement(element, list);
+  }
+
   removeElement(elementId: string): void {
     throw new Error("Method not implemented.");
   }

@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import { TodoController } from "../controller/todo-controller";
 import { TodoStatus } from "../model/todo-status";
@@ -23,10 +24,13 @@ const AddElementButton: React.FC<AddElementButtonProps> = ({
       status: TodoStatus.IN_PROGRESS,
     };
 
-    todoController.addElement(item);
+    todoController.addElement(item, []);
     addItem(item);
   };
   return <button onClick={handleClick}>{name}</button>;
 };
 
 export default AddElementButton;
+*/
+
+export {}
